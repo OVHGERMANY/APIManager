@@ -1,0 +1,1 @@
+So when you add the method or ip or anything it adds it but when you close and reopen the script it does not read the .config file so i will fix that later or fix it yourself

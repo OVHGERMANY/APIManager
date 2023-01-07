@@ -1,0 +1,11 @@
+Place the Manager.sh script in the root directory of your server.
+
+Give the script executable permissions by running the following command:
+
+chmod +x Manager.sh
+Place the rest of the API files in the /var/www/html directory.
+
+Run the Manager.sh script by typing the following command:
+
+./Manager.sh
+Follow the prompts in the script to manage the API.
