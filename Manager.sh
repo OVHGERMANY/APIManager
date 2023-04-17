@@ -11,7 +11,7 @@ readConfig() {
   IFS=$'\n' read -d '' -r -a APIKeys < /var/www/html/Config/api-keys.config
 
   # Read attack methods
-  IFS=$'\n' read -d '' -r -a readarray -t attackMethods < /var/www/html/Config/attack-methods.config
+  IFS=$'\n' read -d '' -r -a attackMethods < /var/www/html/Config/attack-methods.config
 
   # Read banned IPs
   IFS=$'\n' read -d '' -r -a bannedIPs < /var/www/html/Config/banned-ips.config
@@ -28,6 +28,9 @@ writeConfig() {
   # Write banned IPs
   printf "%s\n" "${bannedIPs[@]}" > /var/www/html/Config/banned-ips.config
 }
+
+# Load the configuration files
+readConfig
 
 # Display menu
 displayMenu() {
